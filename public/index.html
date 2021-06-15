@@ -1,70 +1,111 @@
 <!DOCTYPE html>
 
-<html lang="en" style="background: white;">
-<head>
-    <meta charset="utf-8">
+<html lang="en" style="background: white">
+  <head>
+    <meta charset="utf-8" />
     <title>Custom Journey Builder Activity</title>
-    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript" src="js/require.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/styles/salesforce-lightning-design-system.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/styles/salesforce-lightning-design-system.min.css"
+    />
     <script type="text/javascript">
-        (function() {
-            var config = {
-                baseUrl: 'js'
-            };
+      (function () {
+        var config = {
+          baseUrl: "js",
+        };
 
-            var dependencies = [
-                'customActivity'
-            ];
+        var dependencies = ["customActivity"];
 
-            require(config, dependencies);
-        })();
+        require(config, dependencies);
+      })();
     </script>
     <!--Styles-->
     <style type="text/css">
-        body {
-            padding: 20px;
-            margin: 0;
-        }
-        .step {
-            display: none;
-        }
-        #step1 {
-            display: block;
-        }
+      body {
+        padding: 20px;
+        margin: 0;
+      }
+      .step {
+        display: none;
+      }
+      #step1 {
+        display: block;
+      }
     </style>
-
-</head>
-<body >
-<div id="error-msg" class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_error" style="display: none;" role="alert">
-	<span class="slds-assistive-text">error</span>
-	<span class="slds-icon_container slds-icon-utility-error slds-m-right_x-small" title="Description of icon when needed">
-	    <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
-	      <use xlink:href="assets/styles/icons/utility-sprite/svg/symbols.svg#error"></use>
-	    </svg>
-	</span>
-<h2>Please fill out Journey Source 5 fields</h2>
-</div>
-<div>
-     <div><img src='images/hearsay.png' width='50' height ='50' /><label class='e1pageheader'>Hearsay Systems</label></div>
-</div>
-<div id="step1" class="step">
-    <div class="slds-grid slds-grid_vertical slds-m-around_medium">
-	  <div class="slds-col slds-size_2-of-6 slds-m-around_xx-small">
-		<div class="slds-form-element">
-		  <label class="slds-form-element__label" for="select-01">Integration Type</label>
-		  <div class="slds-form-element__control">
-			<div class="slds-select_container">
-			  <select class="slds-select" id="select-01">
-				<option value="">--Select--</option>
-				<option value="CurrentJourney">Current Journey</option>
-			  </select>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	  <div id="inputField-01" class="slds-col slds-size_2-of-6 slds-m-around_xx-small">
+  </head>
+  <body>
+    <div
+      id="error-msg"
+      class="
+        slds-notify slds-notify_alert
+        slds-theme_alert-texture slds-theme_error
+      "
+      style="display: none"
+      role="alert"
+    >
+      <span class="slds-assistive-text">error</span>
+      <span
+        class="slds-icon_container slds-icon-utility-error slds-m-right_x-small"
+        title="Description of icon when needed"
+      >
+        <svg class="slds-icon slds-icon_x-small" aria-hidden="true">
+          <use
+            xlink:href="assets/styles/icons/utility-sprite/svg/symbols.svg#error"
+          ></use>
+        </svg>
+      </span>
+      <h2>Please fill out Journey Source 5 fields</h2>
+    </div>
+    <div>
+      <div>
+        <img src="images/hearsay.png" width="50" height="50" /><label
+          class="e1pageheader"
+          >Hearsay Systems</label
+        >
+      </div>
+    </div>
+    <div id="step1" class="step">
+      <div class="slds-grid slds-grid_vertical slds-m-around_medium">
+        <div class="slds-col slds-size_2-of-6 slds-m-around_xx-small">
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="Action-01"
+              >Action Type</label
+            >
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" id="Action-01">
+                  <option value="">--Select--</option>
+                  <option value="Message">Message</option>
+                  <option value="Lead">Lead</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-col slds-size_2-of-6 slds-m-around_xx-small">
+          <div class="slds-form-element">
+            <label class="slds-form-element__label" for="select-01"
+              >Integration Source</label
+            >
+            <div class="slds-form-element__control">
+              <div class="slds-select_container">
+                <select class="slds-select" id="select-01">
+                  <option value="">--Select--</option>
+                  <option value="CurrentJourney">Current Journey</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div id="inputField-01" class="slds-col slds-size_2-of-6 slds-m-around_xx-small">
 		<div class="slds-form-element">
 		  <label class="slds-form-element__label" for="text-input-id-1">
 			<abbr class="slds-required" title="required">*</abbr>Type your template name</label>
@@ -72,629 +113,900 @@
 			<input type="text" id="text-input-id-1" placeholder="Placeholder Text" required="" class="slds-input" />
 		  </div>
 		</div>
-	  </div>
-	</div>
-</div>
-<div id="step2" class="step">
-    <div class="slds-grid slds-m-around_xx-small">
-		<div class="slds-grid slds-size_4-of-12">
-			<div class="slds-col slds-size_1-of-12">
-			  
-			</div>
-			<div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <label><b>Journey Source</b></label>
-			</div>
-		</div>
-	    	<div class="slds-grid slds-size_2-of-12">
-		</div>
-		<div class="slds-grid slds-size_4-of-12">
-		  <div class="slds-col slds-size_1-of-12">
-			<span></span>
-		  </div>
-		  <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-			<label><b>Hearsay Lead Integration API</b></label>
-		  </div>
-		</div>
+	  </div> -->
+      </div>
     </div>
-    <div class="slds-grid slds-m-around_xx-small">
-    <div class="slds-grid slds-size_4-of-12">
-        <div id="select-journey1-ring" class="slds-col slds-size_1-of-12">
-		<div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    1
-                    </div>
-                </div>
+    <div id="step3" class="step">
+      <div class="slds-grid slds-m-around_xx-small">
+        <div class="slds-grid slds-size_4-of-12">
+          <div class="slds-col slds-size_1-of-12"></div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <label><b>Journey Source</b></label>
+          </div>
         </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-            <div class="slds-form-element">
-                <div class="slds-form-element__control">
-                   <div class="slds-select_container">
-                      <select class="slds-select journey" id="select-journey1">
-                         <option value="">--Select--</option>
-                      </select>
-                   </div>
-                </div>
-             </div>
+        <div class="slds-grid slds-size_2-of-12"></div>
+        <div class="slds-grid slds-size_4-of-12">
+          <div class="slds-col slds-size_1-of-12">
+            <span></span>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <label><b>Hearsay Lead Integration API</b></label>
+          </div>
         </div>
-    </div>
-    <div class="slds-grid slds-size_2-of-12"></div>
-    <div class="slds-grid slds-size_4-of-12">
-        <div id="select-hearsay1-ring" class="slds-col slds-size_1-of-12">
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-journey1-ring" class="slds-col slds-size_1-of-12">
             <div class="slds-progress-ring slds-progress-ring_expired">
-                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
                 <svg viewBox="-1 -1 2 2">
-                    <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
                 </svg>
-                </div>
-                <div class="slds-progress-ring__content" style="background: gray"></div>
+              </div>
+              <div class="slds-progress-ring__content">1</div>
             </div>
-        </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
             <div class="slds-form-element">
-                <div class="slds-form-element__control">
-                  <input type="text" data-id="sourceOrganizationId" id="hearsay-input-id-1" placeholder="Placeholder Text" value="Hearsay Org ID" disabled="" class="slds-input" />
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey1">
+                    <option value="">--Select--</option>
+                  </select>
                 </div>
               </div>
-        </div>
-    </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
-    <div class="slds-grid slds-size_4-of-12">
-        <div id="select-journey2-ring" class="slds-col slds-size_1-of-12">
-		<div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    2
-                    </div>
-                </div>
-        </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-            <div class="slds-form-element">
-                <div class="slds-form-element__control">
-                   <div class="slds-select_container">
-                      <select class="slds-select journey" id="select-journey2">
-                         <option value="">--Select--</option>
-                      </select>
-                   </div>
-                </div>
-             </div>
-        </div>
-    </div>
-    <div class="slds-grid slds-size_2-of-12"></div>
-    <div class="slds-grid slds-size_4-of-12">
-        <div id="select-hearsay2-ring" class="slds-col slds-size_1-of-12">
-            <div class="slds-progress-ring slds-progress-ring_expired">
-                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <svg viewBox="-1 -1 2 2">
-                    <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                </svg>
-                </div>
-                <div class="slds-progress-ring__content" style="background: gray"></div>
             </div>
+          </div>
         </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+        <div class="slds-grid slds-size_2-of-12"></div>
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-hearsay1-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
             <div class="slds-form-element">
-                <div class="slds-form-element__control">
-                  <input type="text" data-id="subOwnerID" id="hearsay-input-id-2" placeholder="Placeholder Text" value="Hearsay Ref ID" disabled="" class="slds-input" />
+              <div class="slds-form-element__control">
+                <input
+                  type="text"
+                  data-id="sourceOrganizationId"
+                  id="hearsay-input-id-1"
+                  placeholder="Placeholder Text"
+                  value="Hearsay Org ID"
+                  disabled=""
+                  class="slds-input"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-journey2-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div class="slds-progress-ring__content">2</div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey2">
+                    <option value="">--Select--</option>
+                  </select>
                 </div>
               </div>
-        </div>
-    </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
-        <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey3-ring" class="slds-col slds-size_1-of-12">
-		<div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    3
-                    </div>
-                </div>
             </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey3">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="slds-grid slds-size_2-of-12"></div>
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-hearsay3-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content" style="background: gray"></div>
-                </div>
+          <div id="select-hearsay2-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
             </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                      <input type="text" data-id="sourceId" id="hearsay-input-id-3" placeholder="Placeholder Text" value="Customer Unique ID" disabled="" class="slds-input" />
-                    </div>
-                  </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <input
+                  type="text"
+                  data-id="subOwnerID"
+                  id="hearsay-input-id-2"
+                  placeholder="Placeholder Text"
+                  value="Hearsay Ref ID"
+                  disabled=""
+                  class="slds-input"
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey4-ring" class="slds-col slds-size_1-of-12">
-		<div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    4
-                    </div>
-                </div>
+          <div id="select-journey3-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div class="slds-progress-ring__content">3</div>
             </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey4">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey3">
+                    <option value="">--Select--</option>
+                  </select>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
         <div class="slds-grid slds-size_2-of-12"></div>
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-hearsay4-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content" style="background: gray"></div>
-                </div>
+          <div id="select-hearsay3-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
             </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                      <input type="text" data-id="cus_name" id="hearsay-input-id-4" placeholder="Placeholder Text" value="Name" disabled="" class="slds-input" />
-                    </div>
-                  </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <input
+                  type="text"
+                  data-id="sourceId"
+                  id="hearsay-input-id-3"
+                  placeholder="Placeholder Text"
+                  value="Customer Unique ID"
+                  disabled=""
+                  class="slds-input"
+                />
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey5-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    5
-                    </div>
-                </div>
+          <div id="select-journey4-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div class="slds-progress-ring__content">4</div>
             </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey5">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey4">
+                    <option value="">--Select--</option>
+                  </select>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
         <div class="slds-grid slds-size_2-of-12"></div>
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-hearsay5-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content" style="background: gray"></div>
-                </div>
+          <div id="select-hearsay4-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
             </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                      <input type="text" data-id="cus_phone" id="hearsay-input-id-5" placeholder="Placeholder Text" value="Phone" disabled="" class="slds-input" />
-                    </div>
-                  </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <input
+                  type="text"
+                  data-id="cus_name"
+                  id="hearsay-input-id-4"
+                  placeholder="Placeholder Text"
+                  value="Name"
+                  disabled=""
+                  class="slds-input"
+                />
+              </div>
             </div>
+          </div>
         </div>
-	</div>
-	<div class="slds-grid slds-m-around_large">
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-journey5-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div class="slds-progress-ring__content">5</div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey5">
+                    <option value="">--Select--</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-grid slds-size_2-of-12"></div>
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-hearsay5-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <input
+                  type="text"
+                  data-id="cus_phone"
+                  id="hearsay-input-id-5"
+                  placeholder="Placeholder Text"
+                  value="Phone"
+                  disabled=""
+                  class="slds-input"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-grid slds-m-around_large">
         <div class="slds-grid slds-size_4-of-12"></div>
         <div class="slds-grid slds-size_2-of-12"></div>
         <div class="slds-grid slds-size_4-of-12"></div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
-	<div class="slds-grid slds-size_4-of-12">
-		<div class="slds-col slds-size_1-of-12"></div>
-		<div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                	<label><b>Optional Mapping fields</b></label>
-		</div>
-    </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey6-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    6
-                    </div>
-                </div>
-            </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey6">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-            </div>
+          <div class="slds-col slds-size_1-of-12"></div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <label><b>Optional Mapping fields</b></label>
+          </div>
         </div>
-        <div class="slds-grid slds-size_2-of-12"></div>
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
         <div class="slds-grid slds-size_4-of-12">
-        <div id="select-hearsay6-ring" class="slds-col slds-size_1-of-12">
+          <div id="select-journey6-ring" class="slds-col slds-size_1-of-12">
             <div class="slds-progress-ring slds-progress-ring_expired">
-                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
                 <svg viewBox="-1 -1 2 2">
-                    <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
                 </svg>
-                </div>
-                <div class="slds-progress-ring__content" style="background: gray"></div>
+              </div>
+              <div class="slds-progress-ring__content">6</div>
             </div>
-        </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
             <div class="slds-form-element">
-                <div class="slds-form-element__control">
+              <div class="slds-form-element__control">
                 <div class="slds-select_container">
-                    <select class="slds-select hearsay" id="select-hearsay6">
-                        <option value="">--Select--</option>
-                        <option value="birthdate">Birth Date</option>
-                        <option value="email">Email</option>
-                        <option value="firstName">First Name</option>
-                        <option value="lastName">Last Name</option>
-                        <option value="preferredName">Preferred Name</option>
-                        <option value="title">Title</option>
-                    </select>
+                  <select class="slds-select journey" id="select-journey6">
+                    <option value="">--Select--</option>
+                  </select>
                 </div>
-                </div>
+              </div>
             </div>
-        </div>
-        </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
-        <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey7-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    7
-                    </div>
-                </div>
-            </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey7">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="slds-grid slds-size_2-of-12"></div>
         <div class="slds-grid slds-size_4-of-12">
-        <div id="select-hearsay7-ring" class="slds-col slds-size_1-of-12">
+          <div id="select-hearsay6-ring" class="slds-col slds-size_1-of-12">
             <div class="slds-progress-ring slds-progress-ring_expired">
-                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
                 <svg viewBox="-1 -1 2 2">
-                    <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
                 </svg>
-                </div>
-                <div class="slds-progress-ring__content" style="background: gray"></div>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
             </div>
-        </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
             <div class="slds-form-element">
-                <div class="slds-form-element__control">
+              <div class="slds-form-element__control">
                 <div class="slds-select_container">
-                    <select class="slds-select hearsay" id="select-hearsay7">
-                        <option value="">--Select--</option>
-			<option value="birthdate">Birth Date</option>
-                        <option value="email">Email</option>
-                        <option value="firstName">First Name</option>
-                        <option value="lastName">Last Name</option>
-                        <option value="preferredName">Preferred Name</option>
-                        <option value="title">Title</option>
-                    </select>
+                  <select class="slds-select hearsay" id="select-hearsay6">
+                    <option value="">--Select--</option>
+                    <option value="birthdate">Birth Date</option>
+                    <option value="email">Email</option>
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last Name</option>
+                    <option value="preferredName">Preferred Name</option>
+                    <option value="title">Title</option>
+                  </select>
                 </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-        </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey8-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    8
-                    </div>
-                </div>
-            </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey8">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="slds-grid slds-size_2-of-12"></div>
-        <div class="slds-grid slds-size_4-of-12">
-        <div id="select-hearsay8-ring" class="slds-col slds-size_1-of-12">
+          <div id="select-journey7-ring" class="slds-col slds-size_1-of-12">
             <div class="slds-progress-ring slds-progress-ring_expired">
-                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
                 <svg viewBox="-1 -1 2 2">
-                    <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
                 </svg>
-                </div>
-                <div class="slds-progress-ring__content" style="background: gray"></div>
+              </div>
+              <div class="slds-progress-ring__content">7</div>
             </div>
-        </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
             <div class="slds-form-element">
-                <div class="slds-form-element__control">
+              <div class="slds-form-element__control">
                 <div class="slds-select_container">
-                    <select class="slds-select hearsay" id="select-hearsay8">
-                        <option value="">--Select--</option>
-                        <option value="birthdate">Birth Date</option>
-                        <option value="email">Email</option>
-                        <option value="firstName">First Name</option>
-                        <option value="lastName">Last Name</option>
-                        <option value="preferredName">Preferred Name</option>
-                        <option value="title">Title</option>
-                    </select>
+                  <select class="slds-select journey" id="select-journey7">
+                    <option value="">--Select--</option>
+                  </select>
                 </div>
-                </div>
+              </div>
             </div>
-        </div>
-        </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
-        <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey9-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    9
-                    </div>
-                </div>
-            </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey9">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="slds-grid slds-size_2-of-12"></div>
         <div class="slds-grid slds-size_4-of-12">
-        <div id="select-hearsay9-ring" class="slds-col slds-size_1-of-12">
+          <div id="select-hearsay7-ring" class="slds-col slds-size_1-of-12">
             <div class="slds-progress-ring slds-progress-ring_expired">
-                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
                 <svg viewBox="-1 -1 2 2">
-                    <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
                 </svg>
-                </div>
-                <div class="slds-progress-ring__content" style="background: gray"></div>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
             </div>
-        </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
             <div class="slds-form-element">
-                <div class="slds-form-element__control">
+              <div class="slds-form-element__control">
                 <div class="slds-select_container">
-                    <select class="slds-select hearsay" id="select-hearsay9">
-                        <option value="">--Select--</option>
-                        <option value="birthdate">Birth Date</option>
-                        <option value="email">Email</option>
-                        <option value="firstName">First Name</option>
-                        <option value="lastName">Last Name</option>
-                        <option value="preferredName">Preferred Name</option>
-                        <option value="title">Title</option>
-                    </select>
+                  <select class="slds-select hearsay" id="select-hearsay7">
+                    <option value="">--Select--</option>
+                    <option value="birthdate">Birth Date</option>
+                    <option value="email">Email</option>
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last Name</option>
+                    <option value="preferredName">Preferred Name</option>
+                    <option value="title">Title</option>
+                  </select>
                 </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-        </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
         <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey10-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                    10
-                    </div>
-                </div>
-            </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey10">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="slds-grid slds-size_2-of-12"></div>
-        <div class="slds-grid slds-size_4-of-12">
-        <div id="select-hearsay10-ring" class="slds-col slds-size_1-of-12">
+          <div id="select-journey8-ring" class="slds-col slds-size_1-of-12">
             <div class="slds-progress-ring slds-progress-ring_expired">
-                <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
                 <svg viewBox="-1 -1 2 2">
-                    <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
                 </svg>
-                </div>
-                <div class="slds-progress-ring__content" style="background: gray"></div>
+              </div>
+              <div class="slds-progress-ring__content">8</div>
             </div>
-        </div>
-        <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
             <div class="slds-form-element">
-                <div class="slds-form-element__control">
+              <div class="slds-form-element__control">
                 <div class="slds-select_container">
-                    <select class="slds-select hearsay" id="select-hearsay10">
-                        <option value="">--Select--</option>
-                        <option value="birthdate">Birth Date</option>
-                        <option value="email">Email</option>
-                        <option value="firstName">First Name</option>
-                        <option value="lastName">Last Name</option>
-                        <option value="preferredName">Preferred Name</option>
-                        <option value="title">Title</option>
-                    </select>
+                  <select class="slds-select journey" id="select-journey8">
+                    <option value="">--Select--</option>
+                  </select>
                 </div>
-                </div>
+              </div>
             </div>
-        </div>
-        </div>
-    </div>
-    <div class="slds-grid slds-m-around_xx-small">
-        <div class="slds-grid slds-size_4-of-12">
-            <div id="select-journey11-ring" class="slds-col slds-size_1-of-12">
-                <div class="slds-progress-ring slds-progress-ring_expired">
-                    <div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <svg viewBox="-1 -1 2 2">
-                        <path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-                    </svg>
-                    </div>
-                    <div class="slds-progress-ring__content">
-                11
-                    </div>
-                </div>
-            </div>
-            <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-                <div class="slds-form-element">
-                    <div class="slds-form-element__control">
-                    <div class="slds-select_container">
-                        <select class="slds-select journey" id="select-journey11">
-                            <option value="">--Select--</option>
-                        </select>
-                    </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
         <div class="slds-grid slds-size_2-of-12"></div>
         <div class="slds-grid slds-size_4-of-12">
-		<div id="select-hearsay11-ring" class="slds-col slds-size_1-of-12">
-			<div class="slds-progress-ring slds-progress-ring_expired">
-				<div class="slds-progress-ring__progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-					<svg viewBox="-1 -1 2 2">
-						<path class="slds-progress-ring__path" id="slds-progress-ring-path-46" d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"></path>
-					</svg>
-				</div>
-				<div class="slds-progress-ring__content" style="background: gray"></div></div>
-			</div>
-			<div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
-				<div class="slds-form-element">
-					<div class="slds-form-element__control">
-					<div class="slds-select_container">
-						<select class="slds-select hearsay" id="select-hearsay11">
-							<option value="">--Select--</option>
-							<option value="birthdate">Birth Date</option>
-							<option value="email">Email</option>
-							<option value="firstName">First Name</option>
-							<option value="lastName">Last Name</option>
-							<option value="preferredName">Preferred Name</option>
-							<option value="title">Title</option>
-						</select>
-					</div>
-					</div>
-				</div>
-			</div>
-		</div>
-    	</div>
-</div>
-<div id="step3" class="step">
-	<div class="slds-grid slds-grid_vertical slds-m-around_medium">
-		<div class="slds-col slds-size_6-of-6 slds-m-around_xx-small">
-			<label id="DELabel" >DATA EXTENSION TEMPLATES (NEW)</label>
-		</div>
-		<div id="intTypeValues" class="slds-col slds-size_6-of-6 slds-m-around_xx-small">
-		</div>
-	  </div>
-	 <hr />
-</div>
-</body>
+          <div id="select-hearsay8-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select hearsay" id="select-hearsay8">
+                    <option value="">--Select--</option>
+                    <option value="birthdate">Birth Date</option>
+                    <option value="email">Email</option>
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last Name</option>
+                    <option value="preferredName">Preferred Name</option>
+                    <option value="title">Title</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-journey9-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div class="slds-progress-ring__content">9</div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey9">
+                    <option value="">--Select--</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-grid slds-size_2-of-12"></div>
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-hearsay9-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select hearsay" id="select-hearsay9">
+                    <option value="">--Select--</option>
+                    <option value="birthdate">Birth Date</option>
+                    <option value="email">Email</option>
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last Name</option>
+                    <option value="preferredName">Preferred Name</option>
+                    <option value="title">Title</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-journey10-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div class="slds-progress-ring__content">10</div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey10">
+                    <option value="">--Select--</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-grid slds-size_2-of-12"></div>
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-hearsay10-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select hearsay" id="select-hearsay10">
+                    <option value="">--Select--</option>
+                    <option value="birthdate">Birth Date</option>
+                    <option value="email">Email</option>
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last Name</option>
+                    <option value="preferredName">Preferred Name</option>
+                    <option value="title">Title</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-grid slds-m-around_xx-small">
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-journey11-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div class="slds-progress-ring__content">11</div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select journey" id="select-journey11">
+                    <option value="">--Select--</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slds-grid slds-size_2-of-12"></div>
+        <div class="slds-grid slds-size_4-of-12">
+          <div id="select-hearsay11-ring" class="slds-col slds-size_1-of-12">
+            <div class="slds-progress-ring slds-progress-ring_expired">
+              <div
+                class="slds-progress-ring__progress"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+              >
+                <svg viewBox="-1 -1 2 2">
+                  <path
+                    class="slds-progress-ring__path"
+                    id="slds-progress-ring-path-46"
+                    d="M 1 0 A 1 1 0 0 1 1.00 0.00 L 0 0"
+                  ></path>
+                </svg>
+              </div>
+              <div
+                class="slds-progress-ring__content"
+                style="background: gray"
+              ></div>
+            </div>
+          </div>
+          <div class="slds-col slds-size_11-of-12 slds-m-left_x-small">
+            <div class="slds-form-element">
+              <div class="slds-form-element__control">
+                <div class="slds-select_container">
+                  <select class="slds-select hearsay" id="select-hearsay11">
+                    <option value="">--Select--</option>
+                    <option value="birthdate">Birth Date</option>
+                    <option value="email">Email</option>
+                    <option value="firstName">First Name</option>
+                    <option value="lastName">Last Name</option>
+                    <option value="preferredName">Preferred Name</option>
+                    <option value="title">Title</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="step4" class="step">
+      <div class="slds-grid slds-grid_vertical slds-m-around_medium">
+        <div class="slds-col slds-size_6-of-6 slds-m-around_xx-small">
+          <label id="DELabel">DATA EXTENSION TEMPLATES (NEW)</label>
+        </div>
+        <div
+          id="intTypeValues"
+          class="slds-col slds-size_6-of-6 slds-m-around_xx-small"
+        ></div>
+      </div>
+      <hr />
+    </div>
+  </body>
 </html>
