@@ -9,6 +9,7 @@ define(["postmonger"], function (Postmonger) {
   var dynTemplate = {};
   var inArgumentList = {};
   var lastStepEnabled = false;
+  var isAppended = false;
   var steps = [
     // initialize to the same value as what's set in config.json for consistency
     { label: "TEMPLATE SELECTION", key: "step1" },
@@ -58,6 +59,7 @@ define(["postmonger"], function (Postmonger) {
         steps[3].active = true; // toggle active
         connection.trigger("updateSteps", steps);
         $("#select-01 option[value=CurrentJourney]").prop("selected", true);
+        $("#select-01").prop("disabled", true);
       } else {
         lastStepEnabled = false; // toggle status
         steps[3].active = true;
@@ -222,14 +224,17 @@ define(["postmonger"], function (Postmonger) {
   }
 
   function appendOptions() {
-    DERowList.forEach((option) => {
-      $("#select-01").append(
-        $("<option>", {
-          value: option,
-          text: option,
-        })
-      );
-    });
+    if (!isAppended) {
+      DERowList.forEach((option) => {
+        $("#select-01").append(
+          $("<option>", {
+            value: option,
+            text: option,
+          })
+        );
+      });
+      isAppended = true;
+    }
   }
 
   function onGetTokens(tokens) {
@@ -433,28 +438,6 @@ define(["postmonger"], function (Postmonger) {
       currentStep.key === "step1" &&
       selectOption == "CurrentJourney"
     ) {
-      //   var input = $("#text-input-id-1")[0];
-      //   var validityState_object = input.validity;
-      //   if (validityState_object.valueMissing) {
-      //     input.setCustomValidity("Must enter your template name!");
-      //     input.reportValidity();
-      //     showStep(null, 1);
-      //     connection.trigger("ready");
-      //   } else {
-      //     const sameCaseArray = DERowList.map((value) =>
-      //       value.toString().toLowerCase()
-      //     );
-      //     //var inputValue = $("#text-input-id-1").val().toString().toLowerCase();
-      //     if (sameCaseArray.includes(inputValue)) {
-      //       input.setCustomValidity("Template name already exist!");
-      //       input.reportValidity();
-      //       showStep(null, 1);
-      //       connection.trigger("ready");
-      //     } else {
-      //       connection.trigger("nextStep");
-      //     }
-      //   }
-    } else if (currentStep.key === "step3") {
       hearsayfields = {};
       var keyData = {};
       keyData["Template Name"] = $("#text-input-id-1").val().toString();
@@ -681,6 +664,20 @@ define(["postmonger"], function (Postmonger) {
           button: "back",
           visible: true,
         });
+        connection.trigger("updateButton", {
+          button: "next",
+          text: "next",
+          visible: true,
+        });
+
+        break;
+      case "step3":
+        $("#step3").show();
+        connection.trigger("updateButton", {
+          button: "back",
+          visible: true,
+        });
+
         if (lastStepEnabled) {
           connection.trigger("updateButton", {
             button: "next",
@@ -695,18 +692,17 @@ define(["postmonger"], function (Postmonger) {
           });
         }
         break;
-      case "step3":
-        $("#step3").show();
+      case "step4":
+        $("#step4").show();
         connection.trigger("updateButton", {
           button: "back",
           visible: true,
         });
         connection.trigger("updateButton", {
           button: "next",
-          text: "done",
+          text: "Done",
           visible: true,
         });
-        break;
     }
   }
 
