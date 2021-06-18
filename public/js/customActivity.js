@@ -759,6 +759,9 @@ define(["postmonger"], function (Postmonger) {
             .end()
             .append('<option value="">--Select--</option>');
         }
+      } else if (currentStep.key === "step2") {
+        //textarea-id-02
+        $("#textarea-id-02").append("");
       }
     }
     connection.trigger("prevStep");
