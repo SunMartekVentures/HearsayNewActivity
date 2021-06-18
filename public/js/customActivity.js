@@ -443,6 +443,21 @@ define(["postmonger"], function (Postmonger) {
 
   function onClickedNext() {
     var selectOption = getIntegrationType("#select-01");
+    var messageOption = getIntegrationType("#Action-01");
+    if (messageOption == "Message") {
+      for (var x in DataExtFields["schema"]) {
+        eventDefKey = DataExtFields["schema"][x].key.substr(
+          0,
+          DataExtFields["schema"][x].key.lastIndexOf(".")
+        );
+        var keyfield = DataExtFields["schema"][x].key.split(".").pop();
+        var keyFieldArr = [];
+        if (keyfield != "endDate") {
+          keyFieldArr.push(keyfield.charAt(0).toUpperCase());
+        }
+      }
+      $("#textarea-id-02").append(keyFieldArr.toString());
+    }
 
     if (currentStep.key === "step4") {
       save();
@@ -729,7 +744,7 @@ define(["postmonger"], function (Postmonger) {
           })
           .attr("selected", true);
       }
-      if (currentStep.key === "step2") {
+      if (currentStep.key === "step3") {
         for (var i = 1; i <= 11; i++) {
           $("#select-journey" + i)
             .find("option")
