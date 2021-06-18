@@ -444,7 +444,7 @@ define(["postmonger"], function (Postmonger) {
   function onClickedNext() {
     var selectOption = getIntegrationType("#select-01");
     var messageOption = getIntegrationType("#Action-01");
-    if (messageOption == "Message") {
+    if (messageOption == "Message" && currentStep.key === "step1") {
       var keyFieldArr = [];
       for (var x in DataExtFields["schema"]) {
         eventDefKey = DataExtFields["schema"][x].key.substr(
