@@ -616,11 +616,99 @@ define(["postmonger"], function (Postmonger) {
           for (var key in inArgumentList) {
             if (inArgumentList.hasOwnProperty(key)) {
               var val = inArgumentList[key];
-              div_data += "<li>" + key + " : " + val + "</li>";
+              //div_data += "<li>" + key + " : " + val + "</li>";
+              $("#select-journey1").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey2").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey3").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey4").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey5").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey6").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey7").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey8").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey9").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey10").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
+              $("#select-journey11").append(
+                '<option value="' +
+                  val +
+                  '">' +
+                  key.charAt(0).toUpperCase() +
+                  key.slice(1) +
+                  "</option>"
+              );
             }
           }
-          $("#DELabel").html("<b>TEMPLATE SELECTED : " + selectOption + "</b>");
-          $("#intTypeValues").html(div_data);
+          //$("#DELabel").html("<b>TEMPLATE SELECTED : " + selectOption + "</b>");
+          //$("#intTypeValues").html(div_data);
           connection.trigger("nextStep");
         })
         .catch((error) => {
@@ -640,6 +728,15 @@ define(["postmonger"], function (Postmonger) {
             return this.text == intTypeValue;
           })
           .attr("selected", true);
+      }
+      if (currentStep.key === "step2") {
+        for (var i = 1; i <= 11; i++) {
+          $("#select-journey" + i)
+            .find("option")
+            .remove()
+            .end()
+            .append('<option value="">--Select--</option>');
+        }
       }
     }
     connection.trigger("prevStep");
