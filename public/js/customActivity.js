@@ -761,7 +761,7 @@ define(["postmonger"], function (Postmonger) {
         }
       } else if (currentStep.key === "step2") {
         //textarea-id-02
-        $("#textarea-id-02").append("");
+        $("#textarea-id-02").html("");
       }
     }
     connection.trigger("prevStep");
