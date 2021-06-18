@@ -445,15 +445,18 @@ define(["postmonger"], function (Postmonger) {
     var selectOption = getIntegrationType("#select-01");
     var messageOption = getIntegrationType("#Action-01");
     if (messageOption == "Message") {
+      var keyFieldArr = [];
       for (var x in DataExtFields["schema"]) {
         eventDefKey = DataExtFields["schema"][x].key.substr(
           0,
           DataExtFields["schema"][x].key.lastIndexOf(".")
         );
         var keyfield = DataExtFields["schema"][x].key.split(".").pop();
-        var keyFieldArr = [];
+
         if (keyfield != "endDate") {
-          keyFieldArr.push(keyfield.charAt(0).toUpperCase());
+          keyFieldArr.push(
+            keyfield.charAt(0).toUpperCase() + keyfield.slice(1)
+          );
         }
       }
       $("#textarea-id-02").append(keyFieldArr.toString());
@@ -593,6 +596,8 @@ define(["postmonger"], function (Postmonger) {
       $("#intTypeValues").html(div_data);
       connection.trigger("nextStep");
       //}
+    } else if (currentStep.key === "step2") {
+      connection.trigger("nextStep");
     } else if (
       currentStep.key === "step1" &&
       selectOption != "CurrentJourney"
