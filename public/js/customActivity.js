@@ -460,14 +460,12 @@ define(["postmonger"], function (Postmonger) {
         }
       }
       $("#textarea-id-02").append(keyFieldArr.toString());
+      $("#textarea-id-02").prop("disabled", true);
     }
 
     if (currentStep.key === "step4") {
       save();
-    } else if (
-      currentStep.key === "step1" &&
-      selectOption == "CurrentJourney"
-    ) {
+    } else if (currentStep.key === "step3") {
       hearsayfields = {};
       var keyData = {};
       //keyDataExtFields["Template Name"] = $("#text-input-id-1").val().toString();
@@ -807,20 +805,11 @@ define(["postmonger"], function (Postmonger) {
           button: "back",
           visible: true,
         });
-
-        if (lastStepEnabled) {
-          connection.trigger("updateButton", {
-            button: "next",
-            text: "next",
-            visible: true,
-          });
-        } else {
-          connection.trigger("updateButton", {
-            button: "next",
-            text: "done",
-            visible: true,
-          });
-        }
+        connection.trigger("updateButton", {
+          button: "next",
+          text: "next",
+          visible: true,
+        });
         break;
       case "step4":
         $("#step4").show();
