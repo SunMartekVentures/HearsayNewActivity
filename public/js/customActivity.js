@@ -465,6 +465,11 @@ define(["postmonger"], function (Postmonger) {
 
     if (currentStep.key === "step4") {
       save();
+    }
+    //builtDeFields();
+    else if (currentStep.key === "step1" && selectOption == "CurrentJourney") {
+      builtDeFields();
+      connection.trigger("nextStep");
     } else if (currentStep.key === "step3") {
       hearsayfields = {};
       var keyData = {};
@@ -581,7 +586,6 @@ define(["postmonger"], function (Postmonger) {
           getIntegrationType("#select-journey11");
         //valDataExtFields["Option 6"] = getIntegrationType("#select-hearsay11");
       }
-      builtDeFields();
 
       //dynTemplate["values"] = valData;
       var div_data = "";
