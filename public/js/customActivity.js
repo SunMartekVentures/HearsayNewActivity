@@ -599,6 +599,33 @@ define(["postmonger"], function (Postmonger) {
       connection.trigger("nextStep");
       //}
     } else if (currentStep.key === "step2") {
+      var splittedMsg = $("#textarea-id-01").val().split(" ");
+      var textMsg = "";
+      for (var i = 0; i < splittedMsg.length; i++) {
+        if (splittedMsg[i].includes("%%,")) {
+          var firstName =
+            splittedMsg[i].substr(
+              splittedMsg[i].indexOf("%%"),
+              splittedMsg[i].lastIndexOf("%%")
+            ) + "}},";
+          firstName = firstName.replace("%%", "{{");
+          textMsg += firstName + " ";
+        } else if (splittedMsg[i].includes("%%")) {
+          var secondName =
+            splittedMsg[i].substr(
+              splittedMsg[i].indexOf("%%"),
+              splittedMsg[i].lastIndexOf("%%")
+            ) + "}}";
+          secondName = secondName.replace("%%", "{{");
+          textMsg += secondName + " ";
+        } else {
+          textMsg += splittedMsg[i] + " ";
+        }
+      }
+      var msgText = {
+        messageBody: textMsg,
+      };
+      hearsayfields["parameters"] = msgText;
       connection.trigger("nextStep");
     } else if (
       currentStep.key === "step1" &&
@@ -838,7 +865,7 @@ define(["postmonger"], function (Postmonger) {
     var fieldListString = "";
 
     if (name == "Current Journey") {
-      inputValue = $("#text-input-id-1").val().toString();
+      //inputValue = $("#text-input-id-1").val().toString();
       let fieldName = "";
       let subfieldName = "";
       for (var fieldKey in inArgumentList) {
@@ -1041,7 +1068,7 @@ define(["postmonger"], function (Postmonger) {
       .catch((error) => {
         console.log("Record Creation Error:", error);
       });
-    createDataExtension(subfieldName, fieldLstString, inputVal);
+    //createDataExtension(subfieldName, fieldLstString, inputVal);
   }
 
   function getInputValue(elementID, valueType) {
