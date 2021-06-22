@@ -486,7 +486,7 @@ define(["postmonger"], function (Postmonger) {
         connection.trigger("nextStep");
       }
     } else if (currentStep.key === "step3") {
-      hearsayfields = {};
+      //hearsayfields = {};
       var keyData = {};
       keyData["Template Name"] = $("#text-input-id-1").val().toString();
       dynTemplate["keys"] = keyData;
