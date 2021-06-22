@@ -622,8 +622,10 @@ define(["postmonger"], function (Postmonger) {
             splittedMsg[i].substr(
               splittedMsg[i].indexOf("%%"),
               splittedMsg[i].lastIndexOf("%%")
-            ) + "}},";
-          firstName = firstName.replace("%%", "{{");
+            ) + '"}},';
+          //'{{'+eventDefKey+'.\"' +fieldName+ '\"}}';
+
+          firstName = firstName.replace("%%", "{{" + eventDefKey + '."');
           textMsg += firstName + " ";
         }
         if (splittedMsg[i].includes("%%.")) {
@@ -631,16 +633,16 @@ define(["postmonger"], function (Postmonger) {
             splittedMsg[i].substr(
               splittedMsg[i].indexOf("%%"),
               splittedMsg[i].lastIndexOf("%%")
-            ) + "}},";
-          firstName = firstName.replace("%%", "{{");
+            ) + '"}}.';
+          firstName = firstName.replace("%%", "{{" + eventDefKey + '."');
           textMsg += firstName + " ";
         } else if (splittedMsg[i].includes("%%")) {
           var secondName =
             splittedMsg[i].substr(
               splittedMsg[i].indexOf("%%"),
               splittedMsg[i].lastIndexOf("%%")
-            ) + "}}";
-          secondName = secondName.replace("%%", "{{");
+            ) + '"}}';
+          secondName = secondName.replace("%%", "{{" + eventDefKey + '."');
           textMsg += secondName + " ";
         } else {
           textMsg += splittedMsg[i] + " ";
@@ -895,9 +897,9 @@ define(["postmonger"], function (Postmonger) {
       for (var fieldKey in inArgumentList) {
         fieldName = inArgumentList[fieldKey].toString();
         if (
-          fieldKey.toLowerCase().includes("cus_name") ||
+          fieldKey.toLowerCase().includes("name") ||
           fieldKey.toLowerCase().includes("sourceorganizationid") ||
-          fieldKey.toLowerCase().includes("subownerid")
+          fieldKey.toLowerCase().includes("sourceownerid")
         ) {
           fieldListString +=
             "<Field>" +
@@ -974,7 +976,7 @@ define(["postmonger"], function (Postmonger) {
             "<IsRequired>true</IsRequired>" +
             "<IsPrimaryKey>true</IsPrimaryKey>" +
             "</Field>";
-        } else if (fieldKey.toLowerCase().includes("cus_phone")) {
+        } else if (fieldKey.toLowerCase().includes("phone")) {
           fieldListString +=
             "<Field>" +
             "<CustomerKey>" +
