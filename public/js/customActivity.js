@@ -61,6 +61,7 @@ define(["postmonger"], function (Postmonger) {
         connection.trigger("updateSteps", steps);
         $("#select-01 option[value=CurrentJourney]").prop("selected", true);
         $("#select-01").prop("disabled", true);
+        $("#inputField-01").show();
       } else {
         lastStepEnabled = false; // toggle status
         steps[3].active = true;
@@ -498,7 +499,7 @@ define(["postmonger"], function (Postmonger) {
         getIntegrationName("#select-journey5") == "--Select--"
       ) {
         $("#error-msg").show();
-        showStep(null, 2);
+        showStep(null, 3);
         connection.trigger("ready");
       } else {
         $("#error-msg").hide();
