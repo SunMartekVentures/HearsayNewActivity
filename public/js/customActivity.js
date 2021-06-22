@@ -607,7 +607,7 @@ define(["postmonger"], function (Postmonger) {
         dynTemplate["values"] = valData;
         var div_data = "";
         for (var key in hearsayfields) {
-          if (hearsayfields.hasOwnProperty(key) == "parameters") {
+          if (key == "parameters") {
             var val = hearsayfields[key].messageBody;
             div_data += "<li>" + "Message Body " + " : " + val + "</li>";
           } else if (hearsayfields.hasOwnProperty(key)) {
