@@ -490,9 +490,9 @@ define(["postmonger"], function (Postmonger) {
       }
     } else if (currentStep.key === "step3") {
       hearsayfields = {};
-      inArgumentList["parameters"] = msgText;
+
       var messageBody = {
-        messageBody: $("textarea-id-01").val(),
+        messageBody: $("#textarea-id-01").val(),
       };
       hearsayfields["parameters"] = messageBody;
       var keyData = {};
@@ -1026,6 +1026,7 @@ define(["postmonger"], function (Postmonger) {
     }
 
     payload.name = inputValue;
+    inArgumentList["parameters"] = msgText;
     payload["arguments"].execute.inArguments = [
       { hearsayfields: inArgumentList },
     ];
