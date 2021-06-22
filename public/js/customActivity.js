@@ -889,7 +889,7 @@ define(["postmonger"], function (Postmonger) {
     var fieldListString = "";
 
     if (name == "Current Journey") {
-      //inputValue = $("#text-input-id-1").val().toString();
+      inputValue = $("#text-input-id-1").val().toString();
       let fieldName = "";
       let subfieldName = "";
       for (var fieldKey in inArgumentList) {
@@ -1019,8 +1019,8 @@ define(["postmonger"], function (Postmonger) {
     ];
 
     payload["metaData"].isConfigured = true;
-    payload.metaDataExtFields["selectedOption"] = name;
-    payload.metaDataExtFields["hearsayData"] = hearsayfields;
+    payload.metaData["selectedOption"] = name;
+    payload.metaData["hearsayData"] = hearsayfields;
 
     connection.trigger("updateActivity", payload);
   }
