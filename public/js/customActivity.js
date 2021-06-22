@@ -465,7 +465,7 @@ define(["postmonger"], function (Postmonger) {
           );
         }
       }
-      $("#textarea-id-02").append(keyFieldArr.toString());
+      $("#textarea-id-02").val(keyFieldArr.toString());
       $("#textarea-id-02").prop("disabled", true);
     }
 
@@ -509,15 +509,14 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey1");
           inArgumentList[getInputValue("#hearsay-input-id-1", "dataset")] =
             getIntegrationType("#select-journey1");
-          valDataExtFields["Hearsay Org ID"] =
-            getIntegrationType("#select-journey1");
+          valData["Hearsay Org ID"] = getIntegrationType("#select-journey1");
         }
         if (getIntegrationName("#select-journey2") != "--Select--") {
           hearsayfields[getInputValue("#hearsay-input-id-2", "")] =
             getIntegrationType("#select-journey2");
           inArgumentList[getInputValue("#hearsay-input-id-2", "dataset")] =
             getIntegrationType("#select-journey2");
-          valDataExtFields["Hearsay User Reference ID"] =
+          valData["Hearsay User Reference ID"] =
             getIntegrationType("#select-journey2");
         }
         if (getIntegrationName("#select-journey3") != "--Select--") {
@@ -525,7 +524,7 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey3");
           inArgumentList[getInputValue("#hearsay-input-id-3", "dataset")] =
             getIntegrationType("#select-journey3");
-          valDataExtFields["Customer Unique ID"] =
+          valData["Customer Unique ID"] =
             getIntegrationType("#select-journey3");
         }
         if (getIntegrationName("#select-journey4") != "--Select--") {
@@ -533,14 +532,14 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey4");
           inArgumentList[getInputValue("#hearsay-input-id-4", "dataset")] =
             getIntegrationType("#select-journey4");
-          valDataExtFields["Name"] = getIntegrationType("#select-journey4");
+          valData["Name"] = getIntegrationType("#select-journey4");
         }
         if (getIntegrationName("#select-journey5") != "--Select--") {
           hearsayfields[getInputValue("#hearsay-input-id-5", "")] =
             getIntegrationType("#select-journey5");
           inArgumentList[getInputValue("#hearsay-input-id-5", "dataset")] =
             getIntegrationType("#select-journey5");
-          valDataExtFields["Phone"] = getIntegrationType("#select-journey5");
+          valData["Phone"] = getIntegrationType("#select-journey5");
         }
         if (
           getIntegrationName("#select-journey6") != "--Select--" &&
@@ -550,7 +549,7 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey6");
           inArgumentList[getIntegrationType("#select-hearsay6")] =
             getIntegrationType("#select-journey6");
-          valDataExtFields["Option 1"] = getIntegrationType("#select-hearsay6");
+          valData["Option 1"] = getIntegrationType("#select-hearsay6");
         }
         if (
           getIntegrationName("#select-journey7") != "--Select--" &&
@@ -560,7 +559,7 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey7");
           inArgumentList[getIntegrationType("#select-hearsay7")] =
             getIntegrationType("#select-journey7");
-          valDataExtFields["Option 2"] = getIntegrationType("#select-hearsay7");
+          valData["Option 2"] = getIntegrationType("#select-hearsay7");
         }
         if (
           getIntegrationName("#select-journey8") != "--Select--" &&
@@ -570,7 +569,7 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey8");
           inArgumentList[getIntegrationType("#select-hearsay8")] =
             getIntegrationType("#select-journey8");
-          valDataExtFields["Option 3"] = getIntegrationType("#select-hearsay8");
+          valData["Option 3"] = getIntegrationType("#select-hearsay8");
         }
         if (
           getIntegrationName("#select-journey9") != "--Select--" &&
@@ -580,7 +579,7 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey9");
           inArgumentList[getIntegrationType("#select-hearsay9")] =
             getIntegrationType("#select-journey9");
-          valDataExtFields["Option 4"] = getIntegrationType("#select-hearsay9");
+          valData["Option 4"] = getIntegrationType("#select-hearsay9");
         }
         if (
           getIntegrationName("#select-journey10") != "--Select--" &&
@@ -590,8 +589,7 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey10");
           inArgumentList[getIntegrationType("#select-hearsay10")] =
             getIntegrationType("#select-journey10");
-          valDataExtFields["Option 5"] =
-            getIntegrationType("#select-hearsay10");
+          valData["Option 5"] = getIntegrationType("#select-hearsay10");
         }
         if (
           getIntegrationName("#select-journey11") != "--Select--" &&
@@ -601,8 +599,7 @@ define(["postmonger"], function (Postmonger) {
             getIntegrationType("#select-journey11");
           inArgumentList[getIntegrationType("#select-hearsay11")] =
             getIntegrationType("#select-journey11");
-          valDataExtFields["Option 6"] =
-            getIntegrationType("#select-hearsay11");
+          valData["Option 6"] = getIntegrationType("#select-hearsay11");
         }
 
         dynTemplate["values"] = valData;
@@ -815,7 +812,7 @@ define(["postmonger"], function (Postmonger) {
         }
       } else if (currentStep.key === "step2") {
         //textarea-id-02
-        $("#textarea-id-02").html("");
+        $("#textarea-id-02").val("");
       }
     }
     connection.trigger("prevStep");
