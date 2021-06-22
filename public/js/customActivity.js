@@ -13,6 +13,7 @@ define(["postmonger"], function (Postmonger) {
   var lastStepEnabled = false;
   var isAppended = false;
   var DataExtFields;
+  var msgText;
   var steps = [
     // initialize to the same value as what's set in config.json for consistency
     { label: "TEMPLATE SELECTION", key: "step1" },
@@ -488,7 +489,12 @@ define(["postmonger"], function (Postmonger) {
         connection.trigger("nextStep");
       }
     } else if (currentStep.key === "step3") {
-      //hearsayfields = {};
+      hearsayfields = {};
+      inArgumentList["parameters"] = msgText;
+      var messageBody = {
+        messageBody: $("textarea-id-01").val(),
+      };
+      hearsayfields["parameters"] = messageBody;
       var keyData = {};
       keyData["Template Name"] = $("#text-input-id-1").val().toString();
       dynTemplate["keys"] = keyData;
@@ -632,8 +638,7 @@ define(["postmonger"], function (Postmonger) {
 
           firstName = firstName.replace("%%", "{{" + eventDefKey + '."');
           textMsg += firstName + " ";
-        }
-        if (splittedMsg[i].includes("%%.")) {
+        } else if (splittedMsg[i].includes("%%.")) {
           var firstName =
             splittedMsg[i].substr(
               splittedMsg[i].indexOf("%%"),
@@ -653,10 +658,10 @@ define(["postmonger"], function (Postmonger) {
           textMsg += splittedMsg[i] + " ";
         }
       }
-      var msgText = {
+      msgText = {
         messageBody: textMsg,
       };
-      hearsayfields["parameters"] = msgText;
+      //hearsayfields["parameters"] = msgText;
       connection.trigger("nextStep");
     } else if (
       currentStep.key === "step1" &&
