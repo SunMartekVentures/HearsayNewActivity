@@ -515,7 +515,10 @@ define(["postmonger"], function (Postmonger) {
       var messageBody = {
         messageBody: $("#textarea-id-01").val(),
       };
-      hearsayfields["parameters"] = messageBody;
+      var messageOption = getIntegrationType("#Action-01");
+      if (messageOption == "Message") {
+        hearsayfields["parameters"] = messageBody;
+      }
       var keyData = {};
       keyData["Template Name"] = $("#text-input-id-1").val().toString();
       dynTemplate["keys"] = keyData;
