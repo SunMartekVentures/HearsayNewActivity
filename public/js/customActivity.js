@@ -127,13 +127,15 @@ define(["postmonger"], function (Postmonger) {
     } else {
       var div_data = "";
       for (var key in mapfields) {
-        if (mapfields.hasOwnProperty(key)) {
+        if (key == "parameters") {
+          div_data += "<li>" + key + " : " + mapfields[key] + "</li>";
+        } else if (mapfields.hasOwnProperty(key)) {
           var val = mapfields[key].split(".").pop().replace("}}", "");
           div_data += "<li>" + key + " : " + val + "</li>";
         }
       }
       $("#intTypeValues").html(div_data);
-      showStep(null, 3);
+      showStep(null, 4);
     }
   }
 
