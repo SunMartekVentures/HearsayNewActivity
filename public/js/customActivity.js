@@ -517,8 +517,7 @@ define(["postmonger"], function (Postmonger) {
         getIntegrationName("#select-journey1") == "--Select--" ||
         getIntegrationName("#select-journey2") == "--Select--" ||
         getIntegrationName("#select-journey3") == "--Select--" ||
-        getIntegrationName("#select-journey4") == "--Select--" ||
-        getIntegrationName("#select-journey5") == "--Select--"
+        getIntegrationName("#select-journey4") == "--Select--"
       ) {
         $("#error-msg").show();
         showStep(null, 3);
