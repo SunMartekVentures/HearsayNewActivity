@@ -128,7 +128,12 @@ define(["postmonger"], function (Postmonger) {
       var div_data = "";
       for (var key in mapfields) {
         if (key == "parameters") {
-          div_data += "<li>" + key + " : " + mapfields[key] + "</li>";
+          div_data +=
+            "<li>" +
+            "Message Body" +
+            " : " +
+            mapfields[key].messageBody +
+            "</li>";
         } else if (mapfields.hasOwnProperty(key)) {
           var val = mapfields[key].split(".").pop().replace("}}", "");
           div_data += "<li>" + key + " : " + val + "</li>";
