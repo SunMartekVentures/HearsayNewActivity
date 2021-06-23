@@ -470,6 +470,20 @@ define(["postmonger"], function (Postmonger) {
       }
       $("#textarea-id-02").val(keyFieldArr.toString());
       $("#textarea-id-02").prop("disabled", true);
+      $("#select-journey5").prop("disabled", true);
+      $("#select-journey6").prop("disabled", true);
+      $("#select-journey7").prop("disabled", true);
+      $("#select-journey8").prop("disabled", true);
+      $("#select-journey9").prop("disabled", true);
+      $("#select-journey10").prop("disabled", true);
+      $("#select-journey11").prop("disabled", true);
+      $("#select-hearsay5").prop("disabled", true);
+      $("#select-hearsay6").prop("disabled", true);
+      $("#select-hearsay7").prop("disabled", true);
+      $("#select-hearsay8").prop("disabled", true);
+      $("#select-hearsay9").prop("disabled", true);
+      $("#select-hearsay10").prop("disabled", true);
+      $("#select-hearsay11").prop("disabled", true);
     }
 
     if (currentStep.key === "step4") {
@@ -825,6 +839,20 @@ define(["postmonger"], function (Postmonger) {
       } else if (currentStep.key === "step2") {
         //textarea-id-02
         $("#textarea-id-02").val("");
+        $("#select-journey5").prop("disabled", false);
+        $("#select-journey6").prop("disabled", false);
+        $("#select-journey7").prop("disabled", false);
+        $("#select-journey8").prop("disabled", false);
+        $("#select-journey9").prop("disabled", false);
+        $("#select-journey10").prop("disabled", false);
+        $("#select-journey11").prop("disabled", false);
+        $("#select-hearsay5").prop("disabled", false);
+        $("#select-hearsay6").prop("disabled", false);
+        $("#select-hearsay7").prop("disabled", false);
+        $("#select-hearsay8").prop("disabled", false);
+        $("#select-hearsay9").prop("disabled", false);
+        $("#select-hearsay10").prop("disabled", false);
+        $("#select-hearsay11").prop("disabled", false);
       }
     }
     connection.trigger("prevStep");
