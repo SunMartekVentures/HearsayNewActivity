@@ -7,6 +7,7 @@ const JWT = require(Path.join(__dirname, "..", "lib", "jwtDecoder.js"));
 var util = require("util");
 var http = require("https");
 var axios = require("axios");
+const jwt = require("jsonwebtoken");
 
 exports.logExecuteData = [];
 
@@ -84,9 +85,24 @@ exports.execute = function (req, res) {
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
       console.log("Decoded ::: " + JSON.stringify(decoded));
 
+      let secret_key =
+        "LNpT-b9AUfAynJLq6EM2i2_gK6EgmnGbdac2naPtx9oz9CHUWhi2pJvdYgldZQaHWWsy4WzpUWwDwL_wk83tJP7ovbJpoY17gtuB7b95OcnG0ognyvv6EoYXlwKZu9COhJRkNI-aBtvyZNHNMfrrF6gJg1nlCAT5FnWd74BFyrniZBKzCtQsn0dWmr7xMtnneGHwJTfRLR9EAKE3FQncpDYF7Qdm9VjvF_7dvuw44e168qeMrJ-yRiTtTLVUdA2";
+      var signOptions = {
+        algorithm: "HS256",
+      };
+
+      var token = jwt.sign(decoded, secret_key, signOptions);
+      console.log("Token : " + token);
+
       // decoded in arguments
-      var decodedArgs = decoded.inArguments[0];
+
+      var decodedArgs = decoded.inArguments[0].hearsayfields.parameters;
       console.log("arguments values are " + JSON.stringify(decodedArgs));
+      if (decodedArgs) {
+        this.hearsayPost(token, "send-text-message");
+      } else {
+        this.hearsayPost(token, "start-lead-management");
+      }
       logData(req);
       res.send(200, "Execute");
     } else {
@@ -94,6 +110,26 @@ exports.execute = function (req, res) {
       return res.status(400).end();
     }
   });
+};
+
+exports.hearsayPost = function (payload, actionType) {
+  var config = {
+    method: "post",
+    url: "https://integration-mcint-jkr.hearsayplatform.com/" + actionType,
+    headers: {
+      "Content-Type": "application/json",
+      "X-Auth-Token": c2a09c7e18d0402254ea5f4c6d638a06a642216bc8903e0d,
+    },
+    data: payload,
+  };
+
+  axios(config)
+    .then(function (response) {
+      console.log("Accepted");
+    })
+    .catch(function (error) {
+      console.log("Hearsay post error for " + actionType + " ::: " + error);
+    });
 };
 
 /*
