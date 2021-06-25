@@ -99,9 +99,9 @@ exports.execute = function (req, res) {
       var decodedArgs = decoded.inArguments[0].hearsayfields.parameters;
       console.log("arguments values are " + JSON.stringify(decodedArgs));
       if (decodedArgs) {
-        this.hearsayPost(token, "send-text-message");
+        hearsayPost(token, "send-text-message");
       } else {
-        this.hearsayPost(token, "start-lead-management");
+        hearsayPost(token, "start-lead-management");
       }
       logData(req);
       res.send(200, "Execute");
@@ -112,7 +112,7 @@ exports.execute = function (req, res) {
   });
 };
 
-exports.hearsayPost = function (payload, actionType) {
+function hearsayPost(payload, actionType) {
   var config = {
     method: "post",
     url: "https://integration-mcint-jkr.hearsayplatform.com/" + actionType,
@@ -130,7 +130,7 @@ exports.hearsayPost = function (payload, actionType) {
     .catch(function (error) {
       console.log("Hearsay post error for " + actionType + " ::: " + error);
     });
-};
+}
 
 /*
  * POST Handler for /publish/ route of Activity.
