@@ -118,7 +118,7 @@ function hearsayPost(payload, actionType) {
     url: "https://integration-mcint-jkr.hearsayplatform.com/" + actionType,
     headers: {
       "Content-Type": "application/json",
-      "X-Auth-Token": c2a09c7e18d0402254ea5f4c6d638a06a642216bc8903e0d,
+      "X-Auth-Token": "c2a09c7e18d0402254ea5f4c6d638a06a642216bc8903e0d",
     },
     data: payload,
   };
