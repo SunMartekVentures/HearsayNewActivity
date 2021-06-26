@@ -95,7 +95,7 @@ define(["postmonger"], function (Postmonger) {
     }
     let selectedOpt;
     if(payload.metaData.selectedOption) selectedOpt = payload.metaData.selectedOption;
-    if(selectedOpt == 'Current Journey'){
+    if(selectedOpt == 'CurrentJourney'){
       $(`#select-01 option[value=${payload.metaData.selectedOption}]`).prop("selected", true);
       $("#text-input-id-1").val(payload.name);
     }else {
