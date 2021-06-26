@@ -944,129 +944,15 @@ define(["postmonger"], function (Postmonger) {
   function save() {
     var name = getIntegrationType("#select-01");
     var inputValue;
-    var fieldListString = "";
-
-    if (name == "Current Journey") {
+    
+    if (name == "CurrentJourney") {
       inputValue = $("#text-input-id-1").val().toString();
-      let fieldName = "";
-      let subfieldName = "";
+      
       for (var fieldKey in inArgumentList) {
-        fieldName = inArgumentList[fieldKey].toString();
-        if (
-          fieldKey.toLowerCase().includes("name") ||
-          fieldKey.toLowerCase().includes("sourceorganizationid") ||
-          fieldKey.toLowerCase().includes("sourceownerid")
-        ) {
-          fieldListString +=
-            "<Field>" +
-            "<CustomerKey>" +
-            fieldName +
-            "</CustomerKey>" +
-            "<Name>" +
-            fieldName +
-            "</Name>" +
-            "<FieldType>Text</FieldType>" +
-            "<MaxLength>50</MaxLength>" +
-            "<IsRequired>true</IsRequired>" +
-            "<IsPrimaryKey>false</IsPrimaryKey>" +
-            "</Field>";
-        } else if (
-          fieldKey.toLowerCase().includes("email") &&
-          fieldName.toLowerCase().includes("option")
-        ) {
-          fieldListString +=
-            "<Field>" +
-            "<CustomerKey>" +
-            fieldKey.charAt(0).toUpperCase() +
-            fieldKey.slice(1) +
-            "</CustomerKey>" +
-            "<Name>" +
-            fieldKey.charAt(0).toUpperCase() +
-            fieldKey.slice(1) +
-            "</Name>" +
-            "<FieldType>EmailAddress</FieldType>" +
-            "<MaxLength>250</MaxLength>" +
-            "<IsRequired>false</IsRequired>" +
-            "<IsPrimaryKey>false</IsPrimaryKey>" +
-            "</Field>";
-        } else if (
-          fieldKey.toLowerCase().includes("date") &&
-          fieldName.toLowerCase().includes("option")
-        ) {
-          fieldListString +=
-            "<Field>" +
-            "<CustomerKey>" +
-            fieldKey.charAt(0).toUpperCase() +
-            fieldKey.slice(1) +
-            "</CustomerKey>" +
-            "<Name>" +
-            fieldKey.charAt(0).toUpperCase() +
-            fieldKey.slice(1) +
-            "</Name>" +
-            "<FieldType>Date</FieldType>" +
-            "<IsRequired>false</IsRequired>" +
-            "<IsPrimaryKey>false</IsPrimaryKey>" +
-            "</Field>";
-        } else if (fieldKey.toLowerCase().includes("sourceid")) {
-          subfieldName +=
-            "<SendableDataExtensionField>" +
-            "    <CustomerKey>" +
-            fieldName +
-            "</CustomerKey>" +
-            "    <Name>" +
-            fieldName +
-            "</Name>" +
-            "    <FieldType>Text</FieldType>" +
-            "</SendableDataExtensionField>";
-
-          fieldListString +=
-            "<Field>" +
-            "<CustomerKey>" +
-            fieldName +
-            "</CustomerKey>" +
-            "<Name>" +
-            fieldName +
-            "</Name>" +
-            "<FieldType>Text</FieldType>" +
-            "<MaxLength>50</MaxLength>" +
-            "<IsRequired>true</IsRequired>" +
-            "<IsPrimaryKey>true</IsPrimaryKey>" +
-            "</Field>";
-        } else if (fieldKey.toLowerCase().includes("phone")) {
-          fieldListString +=
-            "<Field>" +
-            "<CustomerKey>" +
-            fieldName +
-            "</CustomerKey>" +
-            "<Name>" +
-            fieldName +
-            "</Name>" +
-            "<FieldType>Phone</FieldType>" +
-            "<IsRequired>true</IsRequired>" +
-            "<IsPrimaryKey>false</IsPrimaryKey>" +
-            "</Field>";
-        } else if (fieldName.toLowerCase().includes("option")) {
-          fieldListString +=
-            "<Field>" +
-            "<CustomerKey>" +
-            fieldKey.charAt(0).toUpperCase() +
-            fieldKey.slice(1) +
-            "</CustomerKey>" +
-            "<Name>" +
-            fieldKey.charAt(0).toUpperCase() +
-            fieldKey.slice(1) +
-            "</Name>" +
-            "<FieldType>Text</FieldType>" +
-            "<MaxLength>50</MaxLength>" +
-            "<IsRequired>false</IsRequired>" +
-            "<IsPrimaryKey>false</IsPrimaryKey>" +
-            "</Field>";
-        }
-        inArgumentList[fieldKey] =
-          "{{" + eventDefKey + '."' + fieldName + '"}}';
+         inArgumentList[fieldKey] = "{{" + eventDefKey + '."' + inArgumentList[fieldKey].toString() + '"}}';
       }
 
-      insertDERecord(dynTemplate, subfieldName, fieldListString, inputValue);
+      insertDERecord(dynTemplate);
     } else {
       inputValue = name;
     }
@@ -1136,7 +1022,7 @@ define(["postmonger"], function (Postmonger) {
       });
   }
 
-  function insertDERecord(recordData, subfieldName, fieldLstString, inputVal) {
+  function insertDERecord(recordData) {
     fetch("/insert/derow/", {
       method: "POST",
       body: JSON.stringify({
