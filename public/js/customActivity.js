@@ -958,7 +958,7 @@ define(["postmonger"], function (Postmonger) {
     }
 
     payload.name = inputValue;
-    inArgumentList["parameters"] = msgText;
+    if(msgText) inArgumentList["parameters"] = msgText;
     payload["arguments"].execute.inArguments = [
       { hearsayfields: inArgumentList },
     ];
