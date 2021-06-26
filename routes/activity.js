@@ -85,7 +85,9 @@ exports.execute = function (req, res) {
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
       console.log("Decoded ::: " + JSON.stringify(decoded));
 
-      let argument_data = `{"inArguments":${decoded.inArguments}}`;
+      let argument_data = {
+        "inArguments": decoded.inArguments
+      }
       console.log("argument_data ==> " + JSON.stringify(argument_data));
       
       var signOptions = {
