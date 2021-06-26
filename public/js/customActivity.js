@@ -947,11 +947,11 @@ define(["postmonger"], function (Postmonger) {
     
     if (name == "CurrentJourney") {
       inputValue = $("#text-input-id-1").val().toString();
-      
-      for (var fieldKey in inArgumentList) {
-         inArgumentList[fieldKey] = "{{" + eventDefKey + '."' + inArgumentList[fieldKey].toString() + '"}}';
+      if(!payload.metaData.isConfigured){
+        for (var fieldKey in inArgumentList) {
+            inArgumentList[fieldKey] = "{{" + eventDefKey + '."' + inArgumentList[fieldKey].toString() + '"}}';
+        }
       }
-
       insertDERecord(dynTemplate);
     } else {
       inputValue = name;
