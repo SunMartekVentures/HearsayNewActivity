@@ -85,13 +85,14 @@ exports.execute = function (req, res) {
     if (decoded && decoded.inArguments && decoded.inArguments.length > 0) {
       console.log("Decoded ::: " + JSON.stringify(decoded));
 
-      let secret_key =
-        "LNpT-b9AUfAynJLq6EM2i2_gK6EgmnGbdac2naPtx9oz9CHUWhi2pJvdYgldZQaHWWsy4WzpUWwDwL_wk83tJP7ovbJpoY17gtuB7b95OcnG0ognyvv6EoYXlwKZu9COhJRkNI-aBtvyZNHNMfrrF6gJg1nlCAT5FnWd74BFyrniZBKzCtQsn0dWmr7xMtnneGHwJTfRLR9EAKE3FQncpDYF7Qdm9VjvF_7dvuw44e168qeMrJ-yRiTtTLVUdA2";
+      let argument_data = `{"inArguments":${decoded.inArguments}}`;
+      console.log("argument_data ==> " + JSON.stringify(argument_data));
+      
       var signOptions = {
         algorithm: "HS256",
       };
 
-      var token = jwt.sign(decoded, secret_key, signOptions);
+      var token = jwt.sign(argument_data, process.env.jwtPrivateKey, signOptions);
       console.log("Token : " + token);
 
       // decoded in arguments
@@ -115,17 +116,17 @@ exports.execute = function (req, res) {
 function hearsayPost(payload, actionType) {
   var config = {
     method: "post",
-    url: "https://integration-mcint-jkr.hearsayplatform.com/" + actionType,
+    url: process.env.hearsayEndpoint + actionType,
     headers: {
       "Content-Type": "application/json",
-      "X-Auth-Token": "c2a09c7e18d0402254ea5f4c6d638a06a642216bc8903e0d",
+      "X-Auth-Token": process.env.X-Auth-Token,
     },
     data: payload,
   };
 
   axios(config)
     .then(function (response) {
-      console.log("Accepted");
+      console.log("Accepted:::");
     })
     .catch(function (error) {
       console.log("Hearsay post error for " + actionType + " ::: " + error);
