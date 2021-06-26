@@ -119,7 +119,7 @@ function hearsayPost(payload, actionType) {
     url: process.env.hearsayEndpoint + actionType,
     headers: {
       "Content-Type": "application/json",
-      "X-Auth-Token": process.env.X-Auth-Token,
+      "X-Auth-Token": process.env.XAuthToken,
     },
     data: payload,
   };
