@@ -93,7 +93,14 @@ define(["postmonger"], function (Postmonger) {
     if (data) {
       payload = data;
     }
-
+    let selectedOpt;
+    if(payload.metaData.selectedOption) selectedOpt = payload.metaData.selectedOption;
+    if(selectedOpt == 'Current Journey'){
+      $(`#select-01 option[${payload.metaData.selectedOption}]`).prop("selected", true);
+      $("#text-input-id-1").val(payload.name);
+    }else {
+      $(`#select-01 option[${payload.metaData.selectedOption}]`).prop("selected", true);
+    }
     var mapfields = {};
     var hasInArguments = Boolean(
       payload["arguments"] &&
@@ -109,6 +116,8 @@ define(["postmonger"], function (Postmonger) {
     $.each(inArguments, function (index, inArgument) {
       $.each(inArgument, function (key, val) {
         if (key === "hearsayfields") {
+          inArgumentList = val;
+          hearsayfields = payload.metaData.hearsayData;
           mapfields = payload.metaData.hearsayData
             ? payload.metaData.hearsayData
             : {};
