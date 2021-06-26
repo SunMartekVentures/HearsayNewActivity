@@ -96,10 +96,10 @@ define(["postmonger"], function (Postmonger) {
     let selectedOpt;
     if(payload.metaData.selectedOption) selectedOpt = payload.metaData.selectedOption;
     if(selectedOpt == 'Current Journey'){
-      $(`#select-01 option[${payload.metaData.selectedOption}]`).prop("selected", true);
+      $(`#select-01 option[value=${payload.metaData.selectedOption}]`).prop("selected", true);
       $("#text-input-id-1").val(payload.name);
     }else {
-      $(`#select-01 option[${payload.metaData.selectedOption}]`).prop("selected", true);
+      $(`#select-01 option[value=${payload.metaData.selectedOption}]`).prop("selected", true);
     }
     var mapfields = {};
     var hasInArguments = Boolean(
@@ -942,7 +942,7 @@ define(["postmonger"], function (Postmonger) {
   }
 
   function save() {
-    var name = getIntegrationName("#select-01");
+    var name = getIntegrationType("#select-01");
     var inputValue;
     var fieldListString = "";
 
